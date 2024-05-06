@@ -69,6 +69,11 @@ class Record:
         change_phone = Phone(new_phone)
         found_phone.edit_phone(change_phone.value)
 
+    @input_error
+    def remove_phone(self, phone):
+        found_phone = self.find_phone(phone)
+        self.phones.remove(found_phone)
+
 class AddressBook(UserDict):
     def add_record(self, rec:Record):
         if rec.name.value in self.data:
@@ -113,6 +118,8 @@ print(ia)
 ia.add_phone("55555555588")
 print(ia)
 ia.edit_phone("1234567890", "111222333")
+print(ia)
+ia.remove_phone("1234567890")
 print(ia)
 book.add_record(ia)
 print(book)
